@@ -8,11 +8,17 @@
 #define MyAppExeName "padisco.exe"
 
 ; Windows
-#define MyOutputDir       "E:\Documents\bitbucket\padisco\installer"
-#define MyPADiscoSource   "E:\Documents\bitbucket\padisco\padisco"
-#define MyPADiscoBuild    "E:\Documents\bitbucket\padisco\build-padisco-mingw\debug"
-#define MyQtLib           "E:\Qt\5.12.3\mingw73_32\bin"
-#define MyMingwBin        "E:\Qt\5.12.3\mingw73_32\bin"
+#define MyOutputDir       "C:\cygwin64\home\mike\github\padisco\installer"
+#define MyPADiscoSource   "C:\cygwin64\home\mike\github\padisco\padisco"
+#define MyPADiscoBuild    "C:\cygwin64\home\mike\github\padisco\padisco\release"
+#define MyQtLib           "C:\Qt\5.15.0\mingw81_64\bin"
+#define MyMingwBin        "C:\Qt\5.15.0\mingw81_64\bin"
+
+;#define MyOutputDir       "E:\Documents\bitbucket\padisco\installer"
+;#define MyPADiscoSource   "E:\Documents\bitbucket\padisco\padisco"
+;#define MyPADiscoBuild    "E:\Documents\bitbucket\padisco\build-padisco-mingw\debug"
+;#define MyQtLib           "E:\Qt\5.12.3\mingw73_32\bin"
+;#define MyMingwBin        "E:\Qt\5.12.3\mingw73_32\bin"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
@@ -48,15 +54,15 @@ AppAddPath=Add application directory to your environmental path (required)
 
 [Files]
 Source: {#MyPADiscoBuild}\padisco.exe; DestDir: {app}; Flags: ignoreversion; Permissions: admins-full; MinVersion: 0,5.1.2600;
-Source: {#MyQtLib}\Qt5Cored.dll; DestDir: "{app}"; Flags: ignoreversion
-Source: {#MyQtLib}\Qt5Networkd.dll; DestDir: "{app}"; Flags: ignoreversion
+Source: {#MyQtLib}\Qt5Core.dll; DestDir: "{app}"; Flags: ignoreversion
+Source: {#MyQtLib}\Qt5Network.dll; DestDir: "{app}"; Flags: ignoreversion
 
 Source: {#MyPADiscoSource}\COPYING; DestDir: "{app}"; Flags: ignoreversion
 Source: {#MyPADiscoSource}\README.md; DestDir: "{app}"; Flags: ignoreversion
 
 Source: {#MyMingwBin}\libwinpthread-1.dll; DestDir: "{app}"; Flags: ignoreversion
 Source: {#MyMingwBin}\libstdc++-6.dll; DestDir: "{app}"; Flags: ignoreversion
-Source: {#MyMingwBin}\libgcc_s_dw2-1.dll; DestDir: "{app}"; Flags: ignoreversion
+Source: {#MyMingwBin}\libgcc_s_seh-1.dll; DestDir: "{app}"; Flags: ignoreversion
 
 [Registry]
 Root: HKLM; Subkey: "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"; ValueType: expandsz; ValueName: "Path"; ValueData: "{olddata};{app}"
